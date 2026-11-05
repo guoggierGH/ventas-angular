@@ -1,12 +1,20 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, RouterLink } from '@angular/router';
+
+import { Auth } from './auth';
+
 
 @Component({
+  imports: [RouterOutlet, RouterLink],
   selector: 'app-root',
-  imports: [RouterOutlet],
+  styleUrl: './app.css',
   templateUrl: './app.html',
-  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('ventas_oggier');
+  constructor(public auth: Auth, private router: Router) {}
+  
+  salir() {
+    this.auth.logout();
+    this.router.navigate(['/']);
+  }
 }

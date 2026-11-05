@@ -1,0 +1,23 @@
+<h2>Ventas</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>N° Factura</th><th>Fecha</th><th>Cliente</th>
+      <th>Sucursal</th><th>Importe</th><th>IVA</th><th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (v of ventas(); track v.nroFactura) {
+      <tr>
+        <td>{{ v.nroFactura }}</td>
+        <td>{{ v.fechaFactura }}</td>
+        <td>{{ v.cliente }}</td>
+        <td>{{ v.sucursal }}</td>
+        <td>{{ v.importe | currency }}</td>
+        <td>{{ v.iva | currency }}</td>
+        <td>{{ v.estado }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

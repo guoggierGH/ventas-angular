@@ -1,0 +1,31 @@
+<h1>Sistema de Facturación</h1>
+
+@if (auth.estaLogueado()) {
+  <p>Bienvenido, {{ auth.usuario().usuario }}</p>
+  <p>Categoría: {{ nombreCategoria(auth.usuario().categoria) }}</p>
+
+  <h3>Accesos rápidos</h3>
+  @if (auth.tieneCategoria(1)) {
+    <a routerLink="/ventas">Ver ventas</a>
+  }
+  @if (auth.tieneCategoria(2)) {
+    <a routerLink="/clientes">Ver clientes</a>
+  }
+} @else {
+  <p>Consultá nuestras sucursales o ingresá para acceder al sistema.</p>
+  <a routerLink="/login">Ingresar</a>
+}
+
+<a routerLink="/sucursales">Ver sucursales</a>
+
+@if (resumen(); as r) {
+  <h3>Resumen</h3>
+  <ul>
+    <li>Sucursales: {{ r.sucursales }}</li>
+    @if (auth.estaLogueado()) {
+      <li>Clientes: {{ r.clientes }}</li>
+      <li>Facturas emitidas: {{ r.facturas }}</li>
+      <li>Total facturado: {{ r.totalFacturado | currency }}</li>
+    }
+  </ul>
+}

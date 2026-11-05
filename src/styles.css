@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== Paleta ===== */
+:root {
+  --azul-marino: #1B263B;     /* tipografía principal y estructuras formales */
+  --gris-perla: #F4F6F8;      /* fondo general */
+  --superficie: #FBFCFD;      /* tarjetas y tablas, apenas más claro que el fondo */
+  --cobalto: #0047AB;         /* acento: botones, enlaces, totales */
+  --cobalto-oscuro: #003580;  /* hover del acento */
+  --borde: #D5DBE3;
+  --texto-suave: #5A6578;
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--gris-perla);
+  color: var(--azul-marino);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { color: var(--azul-marino); margin: 0 0 0.75rem; }
+h1 { font-size: 1.9rem; }
+
+app-home, app-sucursales, app-ventas, app-clientes, app-login {
+  display: block;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* ===== Enlaces ===== */
+a { color: var(--cobalto); text-decoration: none; font-weight: 500; }
+a:hover { color: var(--cobalto-oscuro); text-decoration: underline; }
+
+/* ===== Menú ===== */
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--azul-marino);
+}
+nav a { color: var(--gris-perla); padding: 0.25rem 0; border-bottom: 2px solid transparent; }
+nav a:hover { color: #fff; text-decoration: none; border-bottom-color: var(--cobalto); }
+nav a.active { border-bottom-color: var(--cobalto); }
+nav span { margin-left: auto; color: var(--gris-perla); opacity: 0.85; font-size: 0.9rem; }
+nav span + button { margin-left: 0; }
+
+/* ===== Botones ===== */
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--cobalto);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+button:hover { background: var(--cobalto-oscuro); }
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--cobalto);
+  outline-offset: 2px;
+}
+
+/* El botón "Salir" del menú, más discreto */
+nav button {
+  background: transparent;
+  border: 1px solid var(--gris-perla);
+  color: var(--gris-perla);
+  padding: 0.3rem 0.8rem;
+}
+nav button:hover { background: var(--gris-perla); color: var(--azul-marino); }
+
+/* ===== Formularios ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 340px;
+  padding: 1.5rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+input {
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--azul-marino);
+}
+input::placeholder { color: var(--texto-suave); }
+
+/* ===== Tablas ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+thead th {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  background: var(--azul-marino);
+  color: var(--gris-perla);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+tbody td {
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--borde);
+}
+tbody tr:nth-child(even) { background: var(--gris-perla); }
+tbody tr:hover { background: #E8EDF4; }
+
+/* ===== Home ===== */
+app-home ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; max-width: 360px; }
+app-home li {
+  padding: 0.6rem 0.9rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--cobalto);
+  border-radius: 6px;
+}
+app-home a { display: inline-block; margin-right: 1rem; }
+
+/* ===== Mensajes ===== */
+p { margin: 0 0 0.75rem; }
